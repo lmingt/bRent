@@ -8,6 +8,8 @@
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
 
+require("UIManager");
+
 cc.Class({
     extends: cc.Component,
 
@@ -31,10 +33,13 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
+    onLoad() {
+        cc.game.addPersistRootNode(this.node);
+    },
 
-    start () {
-
+    start() {
+        window.Main = this;
+        UIManager.showUI(UIName.loginUI);
     },
 
     // update (dt) {},
